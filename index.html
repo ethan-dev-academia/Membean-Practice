@@ -11,13 +11,21 @@
         <header>
             <h1>ts is super cooked - ethan membean test practice</h1>
             <div class="controls">
+                <input type="file" id="fileInput" accept=".txt" style="display: none;" onchange="loadFile(event)">
+                <button onclick="document.getElementById('fileInput').click()">Load paste.txt</button>
                 <button id="shuffleBtn" onclick="shuffleQuestions()">Shuffle</button>
                 <button id="printBtn" onclick="window.print()">Print</button>
                 <button id="showAllBtn" onclick="toggleView()">Show All</button>
             </div>
         </header>
         <div id="quiz-container">
-            <p>Loading vocabulary from paste.txt...</p>
+            <div style="padding: 40px; text-align: center;">
+                <p style="margin-bottom: 20px; font-size: 1.1em;"><strong>Welcome to Ethan Vocab Quiz!</strong></p>
+                <p style="margin-bottom: 20px;">Click "Load paste.txt" to select your vocabulary file, or just double-click index.html and select the file.</p>
+                <p style="color: #666; font-size: 0.9em;">Make sure your paste.txt file has words in this format:<br>
+                word<br>
+                word: definition here</p>
+            </div>
         </div>
     </div>
     <div id="tooltip" class="tooltip"></div>
