@@ -11,3 +11,4 @@ When you have all of them, paste it into the `paste.txt` file. make sure its in 
 You should be good to go.
 
 ### I didn't really spend too much time with this, so functionality is limited.
+Feel free to make a PR with updates or changes that could make it more useful.
