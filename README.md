@@ -1,7 +1,7 @@
 # Membean
 > HOW TO USE
 
-NO NEED TO RUN SERVER NOW, SHOULD ALL WORK IN BROWSER
+NO NEED TO RUN SERVER NOW, SHOULD ALL WORK IN ONE FILE.
 
 Copy your words by dragging (keep in this format. as you can see it also gets the definitions).
 <img width="1060" height="476" alt="Screenshot 2026-01-15 at 11 52 30 PM" src="https://github.com/user-attachments/assets/b377298b-0216-454d-9db3-06af72aeee94" />
