@@ -1,56 +1,69 @@
 let vocabulary = {};
 let questions = [];
 
-// Load vocabulary from paste.txt
-async function loadVocabulary() {
+// Parse vocabulary from text
+function parseVocabulary(text) {
+    // Parse the format: word on one line, then definition on next line starting with "word:"
+    const lines = text.split('\n');
+    vocabulary = {};
+    
+    let currentWord = null;
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+        
+        // Check if this line is a definition (contains ":")
+        if (line.includes(':')) {
+            if (currentWord) {
+                // Remove "word: " prefix if present
+                const definition = line.replace(/^[^:]+:\s*/, '');
+                if (definition) {
+                    vocabulary[currentWord] = definition;
+                }
+                currentWord = null;
+            }
+        } else {
+            // This is likely a word (no colon, and previous word was processed)
+            if (!currentWord) {
+                currentWord = line.toLowerCase();
+            }
+        }
+    }
+    
+    // Handle case where last word doesn't have a definition
+    if (currentWord && !vocabulary[currentWord]) {
+        console.warn(`No definition found for: ${currentWord}`);
+    }
+    
+    generateQuestions();
+    renderQuiz();
+    setupTooltips();
+}
+
+// Load file from file input
+function loadFile(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const text = e.target.result;
+        parseVocabulary(text);
+    };
+    reader.readAsText(file);
+}
+
+// Try to load from paste.txt automatically (works with server)
+async function tryLoadFromServer() {
     try {
         const response = await fetch('paste.txt');
         const text = await response.text();
-        
-        // Parse the format: word on one line, then definition on next line starting with "word:"
-        const lines = text.split('\n');
-        vocabulary = {};
-        
-        let currentWord = null;
-        for (let i = 0; i < lines.length; i++) {
-            const line = lines[i].trim();
-            if (!line) continue;
-            
-            // Check if this line is a definition (contains ":")
-            if (line.includes(':')) {
-                if (currentWord) {
-                    // Remove "word: " prefix if present
-                    const definition = line.replace(/^[^:]+:\s*/, '');
-                    if (definition) {
-                        vocabulary[currentWord] = definition;
-                    }
-                    currentWord = null;
-                }
-            } else {
-                // This is likely a word (no colon, and previous word was processed)
-                if (!currentWord) {
-                    currentWord = line.toLowerCase();
-                }
-            }
-        }
-        
-        // Handle case where last word doesn't have a definition
-        if (currentWord && !vocabulary[currentWord]) {
-            console.warn(`No definition found for: ${currentWord}`);
-        }
-        
-        generateQuestions();
-        renderQuiz();
-        setupTooltips();
+        parseVocabulary(text);
+        // Hide the file input if server load works
+        document.querySelector('button[onclick*="fileInput"]').style.display = 'none';
     } catch (error) {
-        console.error('Error loading vocabulary:', error);
-        document.getElementById('quiz-container').innerHTML = 
-            '<div style="color: red; padding: 20px;"><p><strong>Error loading paste.txt</strong></p>' +
-            '<p>To use this quiz, you need to run a local web server. Options:</p>' +
-            '<ul style="margin: 10px 0; padding-left: 20px;"><li>Python: <code>python -m http.server 8000</code></li>' +
-            '<li>Node.js: <code>npx http-server</code></li>' +
-            '<li>Then open: <code>http://localhost:8000</code></li></ul>' +
-            '<p>Make sure paste.txt is in the same directory as index.html</p></div>';
+        // Server not available, that's okay - user will use file input
+        console.log('No server detected. Please use "Load paste.txt" button.');
     }
 }
 
@@ -95,7 +108,8 @@ function getRandomWords(words, count) {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    loadVocabulary();
+    // Try to load from server first (if available)
+    tryLoadFromServer();
 });
 
 // Shuffle questions
