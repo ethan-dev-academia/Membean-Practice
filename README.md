@@ -10,6 +10,8 @@ When you have all of them, paste it into the `paste.txt` file. make sure its in 
 <img width="834" height="594" alt="Screenshot 2026-01-15 at 11 53 13 PM" src="https://github.com/user-attachments/assets/a2f4f226-c7d3-4db4-8738-e0c20a0f1314" />
 
 You should be good to go. Click the load txt to begin. It will randomize regardless.
+
+Since people kept asking me how to deploy a server, you can just doubleclick index.html in your files and it'll open the static page to use.
 <img width="935" height="328" alt="Screenshot 2026-01-16 at 12 07 13 AM" src="https://github.com/user-attachments/assets/4807e0ac-94d5-4c5b-968f-c97f49715d0a" />
 
 
