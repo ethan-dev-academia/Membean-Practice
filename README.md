@@ -1,8 +1,22 @@
 # Membean
+> HOW TO USE
 
-Written in 10 minutes using cursor.
+#### MAKE A FORK
+Easiest option: GitHub Pages
+- Create a GitHub repo
+- Push your files (including updated `paste.txt`, see later)
+- Enable GitHub Pages in repo Settings
+- Your site will be live
 
-Copy by dragging (keep in this format. as you can see it also gets the definitions).
+Even easier: Netlify
+- Drag and drop the folder to netlify.com (or vercel with a fork of this)
+- It deploys automatically
+
+Other setup (local):
+- Your Python server works fine for local use
+- Just run `python3 -m http.server 8000` whenever you need it
+
+Copy your words by dragging (keep in this format. as you can see it also gets the definitions).
 <img width="1060" height="476" alt="Screenshot 2026-01-15 at 11 52 30 PM" src="https://github.com/user-attachments/assets/b377298b-0216-454d-9db3-06af72aeee94" />
 
 When you have all of them, paste it into the `paste.txt` file. make sure its in this format:
@@ -10,5 +24,9 @@ When you have all of them, paste it into the `paste.txt` file. make sure its in 
 
 You should be good to go.
 
+Deploy it on localhost web or use a vercel etc.
+
 ### I didn't really spend too much time with this, so functionality is limited.
 Feel free to make a PR with updates or changes that could make it more useful.
+
+Written in 10 minutes using cursor.
