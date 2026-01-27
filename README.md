@@ -1,4 +1,6 @@
-# Membean
+# Membean Study -- Can confirm it works (sometimes) -- i got a 98 on membean after using this so its my go to from now on ig
+Halucinates a tiny bit sometimes because the questions are from an algorithm and not AI, but you should get a sense.
+Use this to familiarize yourself for the words. You should still pay attention to membean for best results.
 > HOW TO USE
 
 NO NEED TO RUN SERVER NOW, SHOULD ALL WORK IN ONE FILE.
