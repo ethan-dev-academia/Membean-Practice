@@ -1,3 +1,5 @@
+# currently down atm because membean changed their format/thing and you can no longer copy paste the entire page anymore, figuring ways around it. :D
+
 # Membean Study -- Can confirm it works (sometimes) -- i got a 98 on membean after using this so its my go to from now on ig
 Halucinates a tiny bit sometimes because the questions are from an algorithm and not AI, but you should get a sense.
 Use this to familiarize yourself for the words. You should still pay attention to membean for best results.
